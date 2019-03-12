@@ -125,8 +125,8 @@ public class RegistroAlumnos extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Codigo que permite insertar registros en al base de datos
         try{
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:8080/DB_INS", "root", "");
-            PreparedStatement pst = cn.prepareStatement("insert into Alumnos values(?,?,?)");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/db_ins", "root", "");
+            PreparedStatement pst = cn.prepareStatement("insert into alumnos values(?,?,?)");
             
             pst.setString(1, "0");
             pst.setString(2, txt_nombre.getText().trim());
@@ -146,8 +146,8 @@ public class RegistroAlumnos extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         //Codigo que permite consultar registros en la base de datos
         try{
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/DB_INS", "root", "");
-            PreparedStatement pst = cn.prepareStatement("select * from Alumnos where ID = ?");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/db_ins", "root", "");
+            PreparedStatement pst = cn.prepareStatement("select * from alumnos where ID = ?");
             pst.setString(1, txt_buscar.getText().trim());
             
             ResultSet rs = pst.executeQuery();
@@ -170,8 +170,8 @@ public class RegistroAlumnos extends javax.swing.JFrame {
         try {
             String ID = txt_buscar.getText().trim();
             
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/DB_INS", "root", "");
-            PreparedStatement pst = cn.prepareStatement("update Alumnos set NombreAlumno = ?, GrupoAlumno = ? where ID = " + ID);
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/db_ins", "root", "");
+            PreparedStatement pst = cn.prepareStatement("update alumnos set NombreAlumno = ?, GrupoAlumno = ? where ID = " + ID);
             
             pst.setString(1, txt_nombre.getText().trim());
             pst.setString(2, txt_grupo.getText().trim());
@@ -187,8 +187,8 @@ public class RegistroAlumnos extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         //Codigo que permite borrar registros en la base de datos
         try {
-             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/DB_INS", "root", "");
-            PreparedStatement pst = cn.prepareStatement("delete from Alumnos where ID = ?");
+             Connection cn = DriverManager.getConnection("jdbc:mysql://127.0.0.1/db_ins", "root", "");
+            PreparedStatement pst = cn.prepareStatement("delete from alumnos where ID = ?");
             
             pst.setString(1, txt_buscar.getText().trim());
             pst.executeUpdate();
